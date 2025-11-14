@@ -1,0 +1,66 @@
+{
+"menu": [
+{
+"url": "manage/dashboard/analytics",
+"name": "Dashboard",
+"icon": "menu-icon icon-base ri ri-bar-chart-2-line",
+"slug": "dashboard"
+},
+
+{
+"name": "Operator",
+"icon": "menu-icon icon-base ri ri-shield-user-line",
+"slug": "operator",
+"submenu": [
+{
+"url": "manage/status-dokumen",
+"name": "Status Verifikasi Dokumen",
+"slug": "operator-status-dokumen"
+},
+{
+"url": "manage/documents",
+"name": "List Document",
+"slug": "documents"
+},
+{
+"url": "manage/documents/create",
+"name": "Input Document",
+"slug": "create"
+}
+]
+},
+{
+"menuHeader": "Management Center"
+},
+{
+"url": "admin/laravel/user-management",
+"name": "User Management",
+"slug": "laravel-example-user-management",
+"icon": "menu-icon icon-base ri ri-user-settings-line"
+},
+{
+"url": "manage/documents",
+"name": "List Document",
+"slug": "documents",
+"icon": "menu-icon icon-base ri ri-file-list-2-line"
+},
+{
+"url": "manage/documents/create",
+"name": "Input Document",
+"slug": "create",
+"icon": "menu-icon icon-base ri ri-file-add-line"
+},
+{
+"url": "manage/status-dokumen",
+"name": "Status Verif Dokumen",
+"slug": "status-dokumen",
+"icon": "menu-icon icon-base ri ri-shield-check-line"
+},
+{
+"url": "admin/documents/verifikasi",
+"name": "Verifikasi Dokumen",
+"slug": "admin-verifikasi-dokumen",
+"icon": "menu-icon icon-base ri ri-file-check-line"
+}
+]
+}
