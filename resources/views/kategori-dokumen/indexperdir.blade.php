@@ -1,134 +1,192 @@
 @extends('layouts.autoLayout')
 
-@section('title', 'Peraturan Direktur - RSKK')
+@section('title', 'Pembelajaran Tajwid')
 
 @section('content')
 <section class="section-py first-section-pt py-4 mt-5">
     <div class="container">
-        <div class="row g-4">
 
-            <!-- Konten Utama -->
-            <div class="col-lg-9 col-12 order-lg-1 order-2">
-                <!-- Breadcrumb -->
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb mb-3">
-                        <li class="breadcrumb-item"><a href="{{ url('/') }}">Beranda</a></li>
-                        <li class="breadcrumb-item active">Peraturan Direktur</li>
-                    </ol>
-                </nav>
+        <!-- Sticky Header + Search -->
+<div class="position-sticky top-0 z-3 mb-5" style="background: var(--bs-body-bg);">
+    <div class="card border-0 shadow-sm">
+        <div class="card-body py-3">
+            <div class="row align-items-center g-3">
 
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="mb-0">Dokumen Peraturan Direktur</h4>
-                    <button onclick="window.history.back()" class="btn btn-outline-primary">⬅ Kembali</button>
-                </div>
+                <!-- Judul & Breadcrumb -->
+             <ol class="breadcrumb mb-1 small">
+    <li class="breadcrumb-item">
+        <a href="{{ url('/') }}">Beranda</a>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="{{ url('/peraturan-gubernur') }}">Kitab Kuning</a>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="{{ url('/keputusan-gubernur') }}">Audio Ngaji</a>
+    </li>
+    <li class="breadcrumb-item active">Tajwid Digital</li>
+</ol>
+
 
                 <!-- Search -->
-                <form action="{{ route('peraturan-direktur') }}" method="GET" class="mb-4">
-                    <div class="input-group input-group-merge">
-                        <span class="input-group-text"><i class="ri ri-search-line"></i></span>
-                        <input type="text" name="q" class="form-control" placeholder="Cari dokumen..." value="{{ request('q') }}">
-                    </div>
-                </form>
-
-                <!-- Table -->
-                <div class="card shadow-sm border-0">
-                    <div class="card-body p-2 p-md-3">
-                        <div class="table-responsive">
-                            <table class="table table-hover table-striped align-middle mb-0">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th style="width:25%">Produk Hukum</th>
-                                        <th style="width:45%">Tentang</th>
-                                        <th style="width:15%" class="text-center">Status</th>
-                                        <th style="width:15%" class="text-center">Detail</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @forelse ($peraturanDirektur as $dokumen)
-                                    <tr>
-                                        <td>
-                                            <span class="fw-semibold">{{ $dokumen->jenisDOkumenRef->deskripsi ?? 'Tidak Diketahui' }}</span><br>
-                                            {{ $dokumen->nomor }} Tahun {{ $dokumen->tahun }}
-                                        </td>
-                                        <td>{{ $dokumen->judul }}</td>
-                                        <td class="text-center">
-                                            @if ($dokumen->status == '2')
-                                                <span class="badge bg-success">✅ Berlaku</span>
-                                            @elseif ($dokumen->status == '0')
-                                                <span class="badge bg-danger">❌ Tidak Berlaku</span>
-                                            @elseif ($dokumen->status == '1')
-                                                <span class="badge bg-warning text-dark">⚠️ Berlaku Sebagian</span>
-                                            @endif
-                                        </td>
-                                        <td class="text-center">
-                                            <div class="d-flex flex-wrap justify-content-center gap-2">
-                                                <a href="{{ route('documents.show', $dokumen->id) }}" class="btn btn-sm btn-primary">Lihat</a>
-                                                <a href="{{ asset('storage/' . $dokumen->pdf_file) }}" class="btn btn-sm btn-info" target="_blank" download>Unduh</a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    @empty
-                                    <tr>
-                                        <td colspan="4" class="text-center text-muted py-4">Belum ada dokumen Peraturan Direktur yang tersedia.</td>
-                                    </tr>
-                                    @endforelse
-                                </tbody>
-                            </table>
+                <div class="col-lg-4">
+                    <form method="GET" action="{{ url('/peraturan-direktur') }}">
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-text">
+                                <i class="ri ri-search-line"></i>
+                            </span>
+                            <input
+                                type="text"
+                                name="q"
+                                value="{{ request('q') }}"
+                                class="form-control"
+                                placeholder="Cari materi pembelajaran…
+">
                         </div>
-
-                        <!-- Pagination -->
-                        <div class="d-flex justify-content-between align-items-center flex-wrap mt-3 gap-2">
-                            <div class="d-flex gap-1">
-                                @if ($peraturanDirektur->onFirstPage())
-                                    <span class="btn btn-outline-secondary disabled">&laquo;</span>
-                                @else
-                                    <a href="{{ $peraturanDirektur->previousPageUrl() }}" class="btn btn-outline-secondary">&laquo;</a>
-                                @endif
-
-                                <form method="GET" class="d-flex" onsubmit="return goToPage(this)">
-                                    <input type="number" name="page" min="1" max="{{ $peraturanDirektur->lastPage() }}" value="{{ $peraturanDirektur->currentPage() }}" class="form-control form-control-sm text-center" style="width:60px;">
-                                </form>
-
-                                @if ($peraturanDirektur->hasMorePages())
-                                    <a href="{{ $peraturanDirektur->nextPageUrl() }}" class="btn btn-outline-secondary">&raquo;</a>
-                                @else
-                                    <span class="btn btn-outline-secondary disabled">&raquo;</span>
-                                @endif
-                            </div>
-                            <div><small>Page {{ $peraturanDirektur->currentPage() }} of {{ $peraturanDirektur->lastPage() }}</small></div>
-                        </div>
-
-                    </div>
+                    </form>
                 </div>
+
+                
+
+            <!-- Quick Navigation -->
+<div class="col-lg-4 text-lg-end">
+    <div class="d-flex justify-content-lg-end gap-2 flex-wrap">
+        <a href="{{ url('/') }}" class="btn btn-light btn-sm" title="Beranda">
+            <i class="ri ri-home-4-line"></i>
+        </a>
+
+        <a href="{{ url('/peraturan-gubernur') }}" class="btn btn-outline-primary btn-sm">
+            <i class="ri ri-government-line"></i>
+            Kitab
+        </a>
+
+        <a href="{{ url('/keputusan-gubernur') }}" class="btn btn-outline-success btn-sm">
+            <i class="ri ri-file-list-3-line"></i>
+            Audio
+        </a>
+
+        <a href="{{ url('/peraturan-direktur') }}" class="btn btn-primary btn-sm">
+            <i class="ri ri-file-text-line"></i>
+            Tajwid
+        </a>
+    </div>
+</div>
+
+
             </div>
+        </div>
+    </div>
+</div>
 
-            <!-- Sidebar -->
-            <div class="col-lg-3 col-12 order-lg-2 order-1">
-                <div class="bg-lightest py-2 px-3 rounded mb-3">
-                    <h5 class="mb-0">Kategori Dokumen</h5>
+        <!-- Header -->
+        <div class="text-center mb-5">
+            <h3 class="fw-bold">Pembelajaran Tajwid Interaktif</h3>
+            <p class="text-muted">
+                Belajar bacaan Al-Qur’an dengan tepat dari, sifat, dan hukum tajwid
+            </p>
+        </div>
+
+        <!-- ================= SYEKH ================= -->
+        <section id="syekh-section" class="mb-6">
+            <h4 class="mb-4">Para Syekh / Qari</h4>
+            <div class="row g-4">
+
+                <!-- Card Syekh -->
+                <div class="col-md-6">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body d-flex gap-3">
+                            <img src="{{ asset('assets/img/syekh/muamar.jpg') }}"
+                                 class="rounded" width="90">
+                            <div>
+                                <h6 class="mb-1">Muammar Z.A.</h6>
+                                <p class="small text-muted">
+                                    Qari Indonesia dengan bacaan merdu dan tartil.
+                                </p>
+                                <audio controls class="w-100">
+                                    <source src="{{ asset('assets/audio/002.mp3') }}">
+                                </audio>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+                <div class="col-md-6">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body d-flex gap-3">
+                            <img src="{{ asset('assets/img/syekh/ali-jaber.jpg') }}"
+                                 class="rounded" width="90">
+                            <div>
+                                <h6 class="mb-1">Sheikh Ali Jaber</h6>
+                                <p class="small text-muted">
+                                    Qari dan da’i dengan bacaan tajwid yang kuat.
+                                </p>
+                                <audio controls class="w-100">
+                                    <source src="{{ asset('assets/audio/001.mp3') }}">
+                                </audio>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= TAJWID ================= -->
+        <section id="tajwid-section" class="mb-6">
+            <h4 class="mb-4">Hukum Tajwid</h4>
+
+            <div class="row g-4">
                 @foreach ([
-                    'categoriesPeraturanGubernur'=>'peraturan-gubernur',
-                    'categoriesKeputusanGubernur'=>'keputusan-gubernur',
-                    'categories'=>'keputusan-direktur',
-                    'categoriesPeraturanDirektur'=>'peraturan-direktur',
-                    'categoriesPerizinan'=>'perizinan',
-                    'categoriesSOP'=>'sop'
-                ] as $varName => $route)
-                    <ul class="list-unstyled mb-3">
-                        @foreach ($$varName as $category)
-                            <li class="mb-2">
-                                <a href="{{ route($route) }}" class="d-flex justify-content-between align-items-center text-heading">
-                                    {{ $category->kategori }}
-                                    <span class="badge bg-label-primary">{{ $category->total }}</span>
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
+                    'Izhar','Idgham','Ikhfa','Iqlab',
+                    'Mad','Ghunna','Qalqalah',
+                    'Tafkhim','Tarqiq','Waqf'
+                ] as $tajwid)
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h6>{{ $tajwid }}</h6>
+                            <p class="small text-muted">
+                                Penjelasan singkat hukum {{ $tajwid }}.
+                            </p>
+                            <audio controls class="w-100">
+                                <source src="{{ asset('assets/audio/'.$tajwid.'.mp3') }}">
+                            </audio>
+                        </div>
+                    </div>
+                </div>
                 @endforeach
             </div>
+        </section>
 
-        </div>
+      
+        
+
+        <!-- ================= MAQAM ================= -->
+        <section id="maqam-section" class="mb-6">
+            <h4 class="mb-4">Maqamat / Nada Bacaan</h4>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body text-center">
+                            <h6>Bayyati</h6>
+                            <audio controls class="w-100">
+                                <source src="{{ asset('assets/audio/maqam-bayyati.mp3') }}">
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body text-center">
+                            <h6>Hijaz</h6>
+                            <audio controls class="w-100">
+                                <source src="{{ asset('assets/audio/maqam-hijaz.mp3') }}">
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </div>
 </section>
 @endsection
