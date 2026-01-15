@@ -4347,20 +4347,21 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     border-radius: 0;
   }
 }
+/* FIX LOGO NAVBAR */
 .navbar-brand {
-  float: left;
-  height: 50px;
-  padding: 15px 15px;
-  font-size: 18px;
-  line-height: 20px;
+  height: auto !important;
+  padding: 0 !important;
+  line-height: normal !important;
+  display: flex;
+  align-items: center;
 }
-.navbar-brand:hover,
-.navbar-brand:focus {
-  text-decoration: none;
+
+.navbar-brand img {
+  height: 90px;       /* sesuaikan */
+  width: auto;
+  max-width: 240px;   /* cegah kepanjangan */
 }
-.navbar-brand > img {
-  display: block;
-}
+
 @media (min-width: 768px) {
   .navbar > .container .navbar-brand,
   .navbar > .container-fluid .navbar-brand {

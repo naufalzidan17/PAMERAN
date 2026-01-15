@@ -1,11 +1,8 @@
 @php
-  $width = $width ?? '180';
-  $height = $height ?? '60';
+  $height = $height ?? '100';
 @endphp
 
-<span class="text-primary">
-  <img src="{{ asset('assets/img/branding/logo-rskk1.png') }}" 
-       alt="Logo" 
-       width="{{ $width }}" 
-       height="{{ $height }}">
-</span>
+<img src="{{ asset('assets/img/branding/logo-rskk1.png') }}"
+     alt="Logo"
+     height="{{ $height }}"
+     style="width:auto;">
