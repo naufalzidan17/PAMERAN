@@ -55,11 +55,11 @@ document.addEventListener('DOMContentLoaded', function () {
     </h6>
 
     <h5 class="text-center mb-2">
-      <span class="fw-bold">Success stories</span> from clients
+      <span class="fw-bold">Makhraj Huruf Hijaiyah</span> 
     </h5>
 
     <p class="text-center text-body mb-8">
-      See what our customers have to say about their experience.
+      Makhraj adalah tempat keluarnya huruf-huruf hijaiyah dari alat ucap manusia. Menurut pendapat masyhur Imam Khalil bin Ahmad, makhraj huruf ada 17 yang terbagi menjadi 5 bagian. 
     </p>
 
     {{-- Swiper --}}
@@ -71,8 +71,8 @@ document.addEventListener('DOMContentLoaded', function () {
           $reviews = [
             [
               'logo' => 'logo-2.jpeg',
-              'text' => '1. Makhraj al-Jauf (Rongga Mulut)',
-              'name' => 'Ada 1 Makhraj',
+              'text' => '(Rongga Mulut)',
+              'name' => '1.Al Jauf',
               'role' => 'ا و ي (huruf mad)'
             ],
             [
