@@ -1,86 +1,73 @@
 @php
     use Illuminate\Support\Facades\Auth;
-    use Carbon\Carbon;
 @endphp
 
-<!-- Navbar -->
-<nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme px-3"
-    id="layout-navbar">
+<nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached bg-navbar-theme px-3"
+     id="layout-navbar">
 
-    <!-- Left side -->
-    <div class="d-flex align-items-center me-auto mt-2 mb-2 mb-xl-0">
-        <!-- Brand -->
-        @auth
-            <a href="{{ route('dashboard-analytics-pages') }}" class="navbar-brand me-4">
-                <span class="fw-bold fs-5">Dashboard Management</span>
-            </a>
-        @else
-            <a href="{{ url('/') }}" class="navbar-brand me-4">
-                <span class="fw-bold fs-5">Document Portal</span>
-            </a>
-        @endauth
+    {{-- LEFT : LOGO --}}
+    <a href="{{ url('/') }}" class="navbar-brand d-flex align-items-center">
+        <img src="{{ asset('assets/img/branding/logo-rskk1.png') }}"
+             alt="Logo"
+             height="100"
+             class="me-2">
+        <span class="fw-bold fs-5 d-none d-md-inline">
+            Digital Library Santri
+        </span>
+    </a>
 
-        <!-- Search Form -->
-        <form action="{{ route('search') }}" method="GET" class="d-flex" style="min-width: 280px;">
-            <input type="text" name="q" class="form-control rounded-start" placeholder="Search..."
-                value="{{ request('q') }}">
-            <button class="btn btn-outline-secondary rounded-end" type="submit">
-                <i class="ri ri-search-line"></i>
-            </button>
-        </form>
-    </div>
+    {{-- TOGGLER MOBILE --}}
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarGuest"
+            aria-controls="navbarGuest"
+            aria-expanded="false">
+        <i class="ri ri-menu-line"></i>
+    </button>
 
-    <!-- Right side -->
-    <ul class="navbar-nav flex-row align-items-center">
+    {{-- MENU --}}
+    <div class="collapse navbar-collapse justify-content-end" id="navbarGuest">
 
-        {{-- Kalau sudah login --}}
-        @auth
-            <li class="nav-item me-3">
-                <a href="{{ url('/manage/documents') }}" class="nav-link">
-                    <i class="ri ri-file-list-line me-1"></i> Dokumen
+        {{-- ===== GUEST MENU (TANPA LOGIN) ===== --}}
+        @guest
+        <ul class="navbar-nav align-items-center gap-2">
+
+            <li class="nav-item">
+                <a href="{{ url('/peraturan-gubernur') }}"
+                   class="btn btn-outline-primary btn-sm d-flex align-items-center gap-1">
+                    <i class="ri ri-book-2-line"></i>
+                    <span>Kitab Digital</span>
                 </a>
             </li>
-            @auth
-                @if (Auth::user()->role === 'admin')
-                    <li class="nav-item me-3 position-relative">
-                        <a href="{{ route('documents.expiring') }}" class="nav-link position-relative">
-                            <i class="bi bi-bell fs-6"></i>
-                            @php
-                                $countExpiring = \App\Models\Document::where('jenis_dokumen', 5)
-                                    ->where('status_verifikasi', 2)
-                                    // Cek dokumen belum expired
-                                    ->whereRaw('DATE_ADD(tanggal_penetapan, INTERVAL periode_berlaku YEAR) >= ?', [
-                                        now(),
-                                    ])
-                                    // Opsional: cuma yang mendekati expired 6 bulan terakhir
-                                    ->whereRaw('DATE_ADD(tanggal_penetapan, INTERVAL periode_berlaku YEAR) <= ?', [
-                                        now()->addMonths(6),
-                                    ])
-                                    ->count();
-                            @endphp
 
-                            @if ($countExpiring > 0)
-                                <span class="badge rounded-pill bg-danger"
-                                    style="position: absolute; top: 0; right: 0; font-size: 0.65rem; padding: 0.25em 0.4em; transform: translate(0%, -0%);">
-                                    {{ $countExpiring }}
-                                    <span class="visually-hidden">documents expiring</span>
-                                </span>
-                            @endif
-                        </a>
-                    </li>
-                @endif
-            @endauth
-
-
-
-            <!-- User Dropdown -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown"
-                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="ri ri-user-line me-2"></i>
-                    <span>{{ Auth::user()->username ?? Auth::user()->name }}</span>
+            <li class="nav-item">
+                <a href="{{ url('/perizinan') }}"
+                   class="btn btn-outline-success btn-sm d-flex align-items-center gap-1">
+                    <i class="ri ri-volume-up-line"></i>
+                    <span>Tajwid Digital</span>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            </li>
+
+            <li class="nav-item">
+                <a href="{{ url('/peraturan-direktur') }}"
+                   class="btn btn-primary btn-sm d-flex align-items-center gap-1">
+                    <i class="ri ri-file-text-line"></i>
+                    <span>Audio Digital</span>
+                </a>
+            </li>
+
+        </ul>
+        @endguest
+
+        {{-- ===== LOGIN USER (JIKA ADA) ===== --}}
+        @auth
+        <ul class="navbar-nav align-items-center">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle d-flex align-items-center"
+                   href="#" role="button" data-bs-toggle="dropdown">
+                    <i class="ri ri-user-line me-2"></i>
+                    {{ Auth::user()->username ?? Auth::user()->name }}
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
                     <li>
                         <a class="dropdown-item" href="{{ url('pages/account-settings-account') }}">
                             <i class="ri ri-settings-4-line me-2"></i> Settings
@@ -96,41 +83,8 @@
                     </li>
                 </ul>
             </li>
+        </ul>
         @endauth
 
-        {{-- Kalau guest (opsional, bisa diaktifkan lagi kalau perlu) --}}
-                   <!-- Quick Navigation -->
-<div class="col-lg-4 text-lg-end">
-    <div class="d-flex justify-content-lg-end gap-2 flex-wrap">
-     <a href="{{ url('/') }}" class="navbar-brand d-flex align-items-center me-4">
-    <img src="{{ asset('assets/img/branding/logo-rskk1.png') }}"
-         alt="Logo"
-         height="36"
-         class="me-2">
-
-    <span class="fw-bold fs-5 d-none d-md-inline">
-        Digital Library Santri
-    </span>
-</a>
-
-
-        <a href="{{ url('/peraturan-gubernur') }}" class="btn btn-outline-primary btn-sm">
-            <i class="ri ri-government-line"></i>
-            Kitab
-        </a>
-
-        <a href="{{ url('/keputusan-gubernur') }}" class="btn btn-outline-success btn-sm">
-            <i class="ri ri-file-list-3-line"></i>
-            Audio
-        </a>
-
-        <a href="{{ url('/peraturan-direktur') }}" class="btn btn-primary btn-sm">
-            <i class="ri ri-file-text-line"></i>
-            Tajwid
-        </a>
     </div>
-</div>
-
-    </ul>
 </nav>
-<!-- /Navbar -->

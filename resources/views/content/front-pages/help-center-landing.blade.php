@@ -103,7 +103,7 @@
                                 Panduan membaca Al-Qur’an sesuai kaidah tajwid.
                             </p>
                         </div>
-                        <a class="btn btn-outline-primary btn-sm mt-auto" href="#">
+                        <a class="btn btn-outline-primary btn-sm mt-auto" href="perizinan">
                             Detail
                         </a>
                     </div>

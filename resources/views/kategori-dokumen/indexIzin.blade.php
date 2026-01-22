@@ -70,10 +70,10 @@ document.addEventListener('DOMContentLoaded', function () {
         @php
           $reviews = [
             [
-              'logo' => 'logo-2.png',
-              'text' => 'All the requirements for developers have been taken into consideration, so I’m able to build any interface I want.',
-              'name' => 'Sara Smith',
-              'role' => 'Founder of Continental'
+              'logo' => 'logo-2.jpeg',
+              'text' => '1. Makhraj al-Jauf (Rongga Mulut)',
+              'name' => 'Ada 1 Makhraj',
+              'role' => 'ا و ي (huruf mad)'
             ],
             [
               'logo' => 'logo-5.png',
