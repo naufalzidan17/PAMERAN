@@ -131,44 +131,7 @@
   }
 </style> --}}
 
-    <div class="container mb-6">
-        <div class="row">
-            <!-- Kolom Kiri -->
-            <div class="col-md-6">
-                <div class="card shadow-sm border-0">
-                    <div class="card-header bg-black border-bottom">
-                        <h5 class="mb-0 text-primary">Dokumen Terbaru</h5>
-                    </div>
-                    <div class="card-body p-0">
-                        <ul class="list-group list-group-flush">
-                            @foreach ($documents as $doc)
-                                <li class="list-group-item px-3 py-3 d-flex justify-content-between align-items-start">
-                                    <div class="me-3">
-                                        <a href="{{ url('documents/' . $doc->id) }}"
-                                            class="fw-bold text-primary d-block mb-1">
-                                            {{ \Illuminate\Support\Str::limit($doc->judul, 61) }}
-                                        </a>
-                                        <div class="text-muted small">
-                                            {{ \Illuminate\Support\Str::limit($doc->pemrakarsa, 100) }}
-                                        </div>
-                                    </div>
-                                    @if ($doc->status == 2)
-                                        <span class="badge bg-warning text-dark align-self-start mt-1">Berlaku</span>
-                                    @endif
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Kolom Kanan (kosong dulu) -->
-    <div class="col-md-6">
-        <!-- Konten lain nanti -->
-    </div>
+  
     </div>
     </div>
 

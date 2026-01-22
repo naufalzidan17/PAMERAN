@@ -6,10 +6,15 @@
 
 @section('title', 'Landing - Front Pages')
 
+
 <!-- Vendor Styles -->
 @section('vendor-style')
-  @vite(['resources/assets/vendor/libs/nouislider/nouislider.scss', 'resources/assets/vendor/libs/swiper/swiper.scss'])
+  @vite([
+    'resources/assets/vendor/libs/nouislider/nouislider.scss',
+    'resources/assets/vendor/libs/swiper/swiper.scss'
+  ])
 @endsection
+
 
 <!-- Page Styles -->
 @section('page-style')
@@ -18,13 +23,39 @@
 
 <!-- Vendor Scripts -->
 @section('vendor-script')
-  @vite(['resources/assets/vendor/libs/nouislider/nouislider.js', 'resources/assets/vendor/libs/swiper/swiper.js'])
+  @vite([
+    'resources/assets/vendor/libs/nouislider/nouislider.js',
+    'resources/assets/vendor/libs/swiper/swiper.js'
+  ])
 @endsection
+
 
 <!-- Page Scripts -->
 @section('page-script')
-  @vite(['resources/assets/js/front-page-landing.js'])
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    if (document.querySelector('#swiper-reviews')) {
+        new Swiper('#swiper-reviews', {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+                el: '#swiper-reviews .swiper-pagination',
+                clickable: true
+            },
+            breakpoints: {
+                0: { slidesPerView: 1 },
+                768: { slidesPerView: 2 },
+                1200: { slidesPerView: 3 }
+            }
+        });
+    }
+});
+</script>
+
+@vite(['resources/assets/js/front-page-landing.js'])
 @endsection
+
 
 
 @section('content')

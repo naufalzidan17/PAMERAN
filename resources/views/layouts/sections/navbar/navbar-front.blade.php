@@ -6,6 +6,73 @@ $activeClass = in_array($currentRouteName, $activeRoutes) ? 'active' : '';
 @endphp
 
 @section('vendor-script')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<style>
+/* ===============================
+   NAVBAR SOCIAL ICONS (FINAL)
+=============================== */
+.nav-social {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.nav-social .nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem;
+  line-height: 1;
+}
+
+.nav-social i {
+  font-size: 1.85rem; /* ICON LEBIH BESAR */
+  color: #6c757d;
+  transition: all 0.25s ease;
+}
+
+/* Hover efek */
+.nav-social .nav-link:hover i {
+  transform: scale(1.25);
+}
+
+/* Warna platform */
+.nav-social .ig:hover i { color: #E1306C; }
+.nav-social .tt:hover i { color: #000000; }
+.nav-social .web:hover i { color: #0d6efd; }
+.nav-social .fb:hover i { color: #1877F2; }
+.nav-social .yt:hover i { color: #FF0000; }
+
+/* Tooltip custom */
+.tooltip-inner {
+  background-color: #111;
+  font-size: 0.75rem;
+  padding: 6px 10px;
+}
+.tooltip.bs-tooltip-top .tooltip-arrow::before {
+  border-top-color: #111;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .nav-social {
+    gap: 0.6rem;
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const tooltipTriggerList = [].slice.call(
+    document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  )
+  tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+  })
+})
+</script>
+
 @vite(['resources/assets/vendor/js/dropdown-hover.js', 'resources/assets/vendor/js/mega-dropdown.js'])
 @endsection
 
@@ -32,25 +99,32 @@ $activeClass = in_array($currentRouteName, $activeRoutes) ? 'active' : '';
           <i class="icon-base ri ri-close-fill"></i>
         </button>
         <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="nav-link fw-medium" aria-current="page" href="{{ url('/') }}#HalamanAwal">Beranda</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled text-secondary fw-medium" href="{{ url('#') }}#landingFeatures">Fitur 1</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled text-secondary fw-medium" href="{{ url('#') }}#landingTeam">Fitur 2</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled text-secondary fw-medium" href="{{ url('#') }}#landingFAQ">Fitur 3</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled text-secondary fw-medium" href="{{ url('#') }}#landingContact">FItur 4</a>
-          </li>
-          <li class="nav-item mega-dropdown{{ $activeClass }}">
-            <a href="javascript:void(0);" class="nav-link disabled text-secondary dropdown-toggle navbar-ex-14-mega-dropdown mega-dropdown fw-medium" aria-expanded="false" data-bs-toggle="mega-dropdown" data-trigger="hover">
-              <span>Fitur Dropdown</span>
-            </a>
+     <li class="nav-item nav-social">
+
+  <a class="nav-link ig" href="https://instagram.com/official" target="_blank">
+    <i class="ri ri-instagram-line"></i>
+  </a>
+
+  <a class="nav-link tt" href="https://tiktok.com/@USERNAME" target="_blank">
+    <i class="ri ri-tiktok-line"></i>
+  </a>
+
+  <a class="nav-link web" href="https://websitekamu.com" target="_blank">
+    <i class="ri ri-global-line"></i>
+  </a>
+
+  <a class="nav-link fb" href="https://facebook.com/USERNAME" target="_blank">
+    <i class="ri ri-facebook-circle-line"></i>
+  </a>
+
+  <a class="nav-link yt" href="https://youtube.com/@CHANNEL" target="_blank">
+    <i class="ri ri-youtube-line"></i>
+  </a>
+
+</li>
+
+</li>
+
             <div class="dropdown-menu p-4 p-xl-8">
               <div class="row gy-4">
                 <div class="col-12 col-lg">
@@ -255,9 +329,7 @@ $activeClass = in_array($currentRouteName, $activeRoutes) ? 'active' : '';
         @endif
 
         <!-- navbar button: Start -->
-        <li>
-          <a href="{{ url('/login') }}" class="btn btn-primary px-2 px-sm-4 px-lg-2 px-xl-4" target="_blank"><span class="icon-base ri ri-user-line me-md-1"></span><span class="d-none d-md-block">Login/Register</span></a>
-        </li>
+       
         <!-- navbar button: End -->
       </ul>
       <!-- Toolbar: End -->

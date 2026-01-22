@@ -1,134 +1,135 @@
-@extends('layouts.autoLayout')
+@php
+  $configData = Helper::appClasses();
 
-@section('title', 'Perizinan - RSKK')
+@endphp
+
+@extends('layouts.layoutMaster')
+    
+
+@section('title', 'Customer Reviews')
+
+{{-- Vendor Style --}}
+@section('vendor-style')
+@vite([
+  'resources/assets/vendor/libs/swiper/swiper.scss'
+])
+@endsection
+
+{{-- Vendor Script --}}
+@section('vendor-script')
+@vite([
+  'resources/assets/vendor/libs/swiper/swiper.js'
+])
+@endsection
+
+@section('page-script')
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  new Swiper('#swiper-reviews', {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    loop: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true
+    },
+    breakpoints: {
+      0: { slidesPerView: 1 },
+      768: { slidesPerView: 2 },
+      1200: { slidesPerView: 3 }
+    }
+  });
+});
+</script>
+@endsection
 
 @section('content')
-<section class="section-py first-section-pt py-4 mt-5">
-    <div class="container">
-        <div class="row g-4">
 
-            <!-- Konten Utama -->
-            <div class="col-lg-9 col-12 order-lg-1 order-2">
-                <!-- Breadcrumb -->
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb mb-3">
-                        <li class="breadcrumb-item"><a href="{{ url('/') }}">Beranda</a></li>
-                        <li class="breadcrumb-item active">Perizinan</li>
-                    </ol>
-                </nav>
+<section class="section-py bg-body">
+  <div class="container">
 
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="mb-0">Dokumen Perizinan</h4>
-                    <button onclick="window.history.back()" class="btn btn-outline-primary">⬅ Kembali</button>
-                </div>
+    {{-- Title --}}
+    <h6 class="text-center d-flex justify-content-center align-items-center mb-4">
+      <img src="{{ asset('assets/img/front-pages/icons/section-title-icon.png') }}" height="18" class="me-2">
+      <span class="text-uppercase">Real customers reviews</span>
+    </h6>
 
-                <!-- Search -->
-                <form action="{{ route('perizinan') }}" method="GET" class="mb-4">
-                    <div class="input-group input-group-merge">
-                        <span class="input-group-text"><i class="ri ri-search-line"></i></span>
-                        <input type="text" name="q" class="form-control" placeholder="Cari dokumen..." value="{{ request('q') }}">
-                    </div>
-                </form>
+    <h5 class="text-center mb-2">
+      <span class="fw-bold">Success stories</span> from clients
+    </h5>
 
-                <!-- Table -->
-                <div class="card shadow-sm border-0">
-                    <div class="card-body p-2 p-md-3">
-                        <div class="table-responsive">
-                            <table class="table table-hover table-striped align-middle mb-0">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th style="width:25%">Produk Hukum</th>
-                                        <th style="width:45%">Tentang</th>
-                                        <th style="width:15%" class="text-center">Status</th>
-                                        <th style="width:15%" class="text-center">Detail</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @forelse ($perIzinan as $dokumen)
-                                    <tr>
-                                        <td>
-                                            <span class="fw-semibold">{{ $dokumen->jenisDOkumenRef->deskripsi ?? 'Tidak Diketahui' }}</span><br>
-                                            {{ $dokumen->nomor }} Tahun {{ $dokumen->tahun }}
-                                        </td>
-                                        <td>{{ $dokumen->judul }}</td>
-                                        <td class="text-center">
-                                            @if ($dokumen->status == '2')
-                                                <span class="badge bg-success">✅ Berlaku</span>
-                                            @elseif ($dokumen->status == '0')
-                                                <span class="badge bg-danger">❌ Tidak Berlaku</span>
-                                            @elseif ($dokumen->status == '1')
-                                                <span class="badge bg-warning text-dark">⚠️ Berlaku Sebagian</span>
-                                            @endif
-                                        </td>
-                                        <td class="text-center">
-                                            <div class="d-flex flex-wrap justify-content-center gap-2">
-                                                <a href="{{ route('documents.show', $dokumen->id) }}" class="btn btn-sm btn-primary">Lihat</a>
-                                                <a href="{{ asset('storage/' . $dokumen->pdf_file) }}" class="btn btn-sm btn-info" target="_blank" download>Unduh</a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    @empty
-                                    <tr>
-                                        <td colspan="4" class="text-center text-muted py-4">Belum ada dokumen Perizinan yang tersedia.</td>
-                                    </tr>
-                                    @endforelse
-                                </tbody>
-                            </table>
-                        </div>
+    <p class="text-center text-body mb-8">
+      See what our customers have to say about their experience.
+    </p>
 
-                        <!-- Pagination -->
-                        <div class="d-flex justify-content-between align-items-center flex-wrap mt-3 gap-2">
-                            <div class="d-flex gap-1">
-                                @if ($perIzinan->onFirstPage())
-                                    <span class="btn btn-outline-secondary disabled">&laquo;</span>
-                                @else
-                                    <a href="{{ $perIzinan->previousPageUrl() }}" class="btn btn-outline-secondary">&laquo;</a>
-                                @endif
+    {{-- Swiper --}}
+    <div class="swiper" id="swiper-reviews">
+      <div class="swiper-wrapper">
 
-                                <form method="GET" class="d-flex" onsubmit="return goToPage(this)">
-                                    <input type="number" name="page" min="1" max="{{ $perIzinan->lastPage() }}" value="{{ $perIzinan->currentPage() }}" class="form-control form-control-sm text-center" style="width:60px;">
-                                </form>
+        {{-- ITEM --}}
+        @php
+          $reviews = [
+            [
+              'logo' => 'logo-2.png',
+              'text' => 'All the requirements for developers have been taken into consideration, so I’m able to build any interface I want.',
+              'name' => 'Sara Smith',
+              'role' => 'Founder of Continental'
+            ],
+            [
+              'logo' => 'logo-5.png',
+              'text' => 'I\'ve never used a theme as versatile and flexible as Vuexy. It\'s my go to for building dashboard sites.',
+              'name' => 'Eugenia Moore',
+              'role' => 'Founder of Hubspot'
+            ],
+            [
+              'logo' => 'logo-1.png',
+              'text' => 'Materio is awesome, and I particularly enjoy knowing that if I get stuck on something.',
+              'name' => 'Tommy Haffman',
+              'role' => 'Founder of Levis'
+            ],
+            [
+              'logo' => 'logo-3.png',
+              'text' => 'This template is superior in so many ways. The code, the design, the updates, the support.',
+              'name' => 'Eugenia Moore',
+              'role' => 'CTO of Airbnb'
+            ],
+          ];
+        @endphp
 
-                                @if ($perIzinan->hasMorePages())
-                                    <a href="{{ $perIzinan->nextPageUrl() }}" class="btn btn-outline-secondary">&raquo;</a>
-                                @else
-                                    <span class="btn btn-outline-secondary disabled">&raquo;</span>
-                                @endif
-                            </div>
-                            <div><small>Page {{ $perIzinan->currentPage() }} of {{ $perIzinan->lastPage() }}</small></div>
-                        </div>
+        @foreach ($reviews as $review)
+        <div class="swiper-slide">
+          <div class="card h-100">
+            <div class="card-body text-center d-flex flex-column justify-content-between p-5">
+              <img src="{{ asset('assets/img/front-pages/branding/' . $review['logo']) }}"
+                   class="mb-4" style="max-height:40px">
 
-                    </div>
-                </div>
+              <p class="mb-4 text-heading">“{{ $review['text'] }}”</p>
+
+              <div>
+                <h6 class="mb-1">{{ $review['name'] }}</h6>
+                <p class="small mb-0 text-body">{{ $review['role'] }}</p>
+              </div>
             </div>
-
-            <!-- Sidebar -->
-            <div class="col-lg-3 col-12 order-lg-2 order-1">
-                <div class="bg-lightest py-2 px-3 rounded mb-3">
-                    <h5 class="mb-0">Kategori Dokumen</h5>
-                </div>
-                @foreach ([
-                    'categoriesPeraturanGubernur'=>'peraturan-gubernur',
-                    'categoriesKeputusanGubernur'=>'keputusan-gubernur',
-                    'categories'=>'keputusan-direktur',
-                    'categoriesPeraturanDirektur'=>'peraturan-direktur',
-                    'categoriesPerizinan'=>'perizinan',
-                    'categoriesSOP'=>'sop'
-                ] as $varName => $route)
-                    <ul class="list-unstyled mb-3">
-                        @foreach ($$varName as $category)
-                            <li class="mb-2">
-                                <a href="{{ route($route) }}" class="d-flex justify-content-between align-items-center text-heading">
-                                    {{ $category->kategori }}
-                                    <span class="badge bg-label-primary">{{ $category->total }}</span>
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
-                @endforeach
-            </div>
-
+          </div>
         </div>
+        @endforeach
+
+      </div>
+      <div class="swiper-pagination mt-4"></div>
     </div>
+    
+
+    {{-- CLIENT LOGO --}}
+    <div class="row justify-content-center mt-10 text-center">
+      @for ($i = 1; $i <= 5; $i++)
+        <div class="col-4 col-md-2 mb-4">
+          <img src="{{ asset('assets/img/front-pages/branding/logo-' . $i . '-light.png') }}"
+               class="img-fluid" style="max-height:40px">
+        </div>
+      @endfor
+    </div>
+
+  </div>
 </section>
+
 @endsection

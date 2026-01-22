@@ -1,66 +1,58 @@
 {
-"menu": [
-{
-"url": "manage/dashboard/analytics",
-"name": "Dashboard",
-"icon": "menu-icon icon-base ri ri-bar-chart-2-line",
-"slug": "dashboard"
-},
+  "menu": [
+    {
+      "url": "/",
+      "name": "Home",
+      "icon": "menu-icon icon-base ri ri-home-4-line",
+      "slug": "home"
+    },
+     {
+          "url": "/perizinan",
+          "name": "Tajwid Digital",
+          "icon": "menu-icon icon-base ri ri-eye-line",
+          "slug": "perizinan"
+        },
+         {
+          "url": "/peraturan-direktur",
+          "name": "Audio Ngaji",
+          "icon": "menu-icon icon-base ri ri-eye-line",
+          "slug": "peraturan-direktur"
+        },
+         {
+          "url": "/peraturan-gubernur",
+          "name": "Kitab Kuning",
+          "icon": "menu-icon icon-base ri ri-eye-line",
+          "slug": "peraturan-gubernur"
+        },
+    
 
-{
-"name": "Operator",
-"icon": "menu-icon icon-base ri ri-shield-user-line",
-"slug": "operator",
-"submenu": [
-{
-"url": "manage/status-dokumen",
-"name": "Status Verifikasi Dokumen",
-"slug": "operator-status-dokumen"
-},
-{
-"url": "manage/documents",
-"name": "List Document",
-"slug": "documents"
-},
-{
-"url": "manage/documents/create",
-"name": "Input Document",
-"slug": "create"
-}
-]
-},
-{
-"menuHeader": "Management Center"
-},
-{
-"url": "admin/laravel/user-management",
-"name": "User Management",
-"slug": "laravel-example-user-management",
-"icon": "menu-icon icon-base ri ri-user-settings-line"
-},
-{
-"url": "manage/documents",
-"name": "List Document",
-"slug": "documents",
-"icon": "menu-icon icon-base ri ri-file-list-2-line"
-},
-{
-"url": "manage/documents/create",
-"name": "Input Document",
-"slug": "create",
-"icon": "menu-icon icon-base ri ri-file-add-line"
-},
-{
-"url": "manage/status-dokumen",
-"name": "Status Verif Dokumen",
-"slug": "status-dokumen",
-"icon": "menu-icon icon-base ri ri-shield-check-line"
-},
-{
-"url": "admin/documents/verifikasi",
-"name": "Verifikasi Dokumen",
-"slug": "admin-verifikasi-dokumen",
-"icon": "menu-icon icon-base ri ri-file-check-line"
-}
-]
+    {
+      "name": "Guest",
+      "icon": "menu-icon icon-base ri ri-eye-line",
+      "slug": "guest",
+      "submenu": [
+         
+        {
+          "url": "/perdir",
+          "name": "List Dokumen Perdir",
+          "slug": "perdir"
+        },
+        {
+          "url": "manage/status-dokumen",
+          "name": "Status Dokumen",
+          "slug": "guest-status-dokumen"
+        },
+        {
+          "url": "manage/documents",
+          "name": "List Dokumen",
+          "slug": "guest-documents"
+        },
+        {
+          "url": "manage/documents/create",
+          "name": "Input Dokumen",
+          "slug": "guest-create"
+        }
+      ]
+    }
+  ]
 }

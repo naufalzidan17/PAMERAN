@@ -1,4 +1,9 @@
-@extends('layouts.autoLayout')
+@php
+  $configData = Helper::appClasses();
+  $configData['layout'] = 'horizontal'; // ⬅️ HILANGKAN SIDEBAR
+@endphp
+
+@extends('layouts.layoutMaster')
 
 @section('title', 'Pembelajaran Tajwid')
 
@@ -47,29 +52,7 @@
 
                 
 
-            <!-- Quick Navigation -->
-<div class="col-lg-4 text-lg-end">
-    <div class="d-flex justify-content-lg-end gap-2 flex-wrap">
-        <a href="{{ url('/') }}" class="btn btn-light btn-sm" title="Beranda">
-            <i class="ri ri-home-4-line"></i>
-        </a>
 
-        <a href="{{ url('/peraturan-gubernur') }}" class="btn btn-outline-primary btn-sm">
-            <i class="ri ri-government-line"></i>
-            Kitab
-        </a>
-
-        <a href="{{ url('/keputusan-gubernur') }}" class="btn btn-outline-success btn-sm">
-            <i class="ri ri-file-list-3-line"></i>
-            Audio
-        </a>
-
-        <a href="{{ url('/peraturan-direktur') }}" class="btn btn-primary btn-sm">
-            <i class="ri ri-file-text-line"></i>
-            Tajwid
-        </a>
-    </div>
-</div>
 
 
             </div>

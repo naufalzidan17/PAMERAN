@@ -15,3 +15,6 @@
         </div>
     @endif
 @endsection
+
+{{-- SLOT UNTUK SCRIPT HALAMAN --}}
+@yield('page-script')

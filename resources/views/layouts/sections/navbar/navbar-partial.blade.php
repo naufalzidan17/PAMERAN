@@ -99,14 +99,37 @@
         @endauth
 
         {{-- Kalau guest (opsional, bisa diaktifkan lagi kalau perlu) --}}
-        @guest
-            <li class="nav-item me-2">
-                <a href="{{ route('auth-login-basic') }}" class="btn btn-outline-primary">Login</a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('auth-register-basic') }}" class="btn btn-primary">Register</a>
-            </li>
-        @endguest
+                   <!-- Quick Navigation -->
+<div class="col-lg-4 text-lg-end">
+    <div class="d-flex justify-content-lg-end gap-2 flex-wrap">
+     <a href="{{ url('/') }}" class="navbar-brand d-flex align-items-center me-4">
+    <img src="{{ asset('assets/img/branding/logo-rskk1.png') }}"
+         alt="Logo"
+         height="36"
+         class="me-2">
+
+    <span class="fw-bold fs-5 d-none d-md-inline">
+        Digital Library Santri
+    </span>
+</a>
+
+
+        <a href="{{ url('/peraturan-gubernur') }}" class="btn btn-outline-primary btn-sm">
+            <i class="ri ri-government-line"></i>
+            Kitab
+        </a>
+
+        <a href="{{ url('/keputusan-gubernur') }}" class="btn btn-outline-success btn-sm">
+            <i class="ri ri-file-list-3-line"></i>
+            Audio
+        </a>
+
+        <a href="{{ url('/peraturan-direktur') }}" class="btn btn-primary btn-sm">
+            <i class="ri ri-file-text-line"></i>
+            Tajwid
+        </a>
+    </div>
+</div>
 
     </ul>
 </nav>
