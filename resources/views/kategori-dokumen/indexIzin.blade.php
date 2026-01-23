@@ -76,8 +76,8 @@ document.addEventListener('DOMContentLoaded', function () {
               'role' => 'ا و ي (huruf mad)'
             ],
             [
-              'logo' => 'logo-5.png',
-              'text' => 'I\'ve never used a theme as versatile and flexible as Vuexy. It\'s my go to for building dashboard sites.',
+              'logo' => 'logo-5.jpg',
+              'text' => 'Aqshol Halqi',
               'name' => 'Eugenia Moore',
               'role' => 'Founder of Hubspot'
             ],
@@ -98,10 +98,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         @foreach ($reviews as $review)
         <div class="swiper-slide">
-          <div class="card h-100">
+          <div class="card h-230">
             <div class="card-body text-center d-flex flex-column justify-content-between p-5">
               <img src="{{ asset('assets/img/front-pages/branding/' . $review['logo']) }}"
-                   class="mb-4" style="max-height:40px">
+                   class="mb-4" style="max-height:230px">
 
               <p class="mb-4 text-heading">“{{ $review['text'] }}”</p>
 
