@@ -72,26 +72,26 @@ document.addEventListener('DOMContentLoaded', function () {
             [
               'logo' => 'logo-2.jpeg',
               'text' => '(Rongga Mulut)',
-              'name' => '1.Al Jauf',
+              'name' => '1. الجوف',
               'role' => 'ا و ي (huruf mad)'
             ],
             [
               'logo' => 'logo-5.jpg',
-              'text' => 'Aqshol Halqi',
-              'name' => 'Eugenia Moore',
-              'role' => 'Founder of Hubspot'
+              'text' => 'Pangkal Tenggorokan',
+              'name' => '2. أقصى الحلق',
+              'role' => 'ء هـ'
             ],
             [
-              'logo' => 'logo-1.png',
-              'text' => 'Materio is awesome, and I particularly enjoy knowing that if I get stuck on something.',
-              'name' => 'Tommy Haffman',
-              'role' => 'Founder of Levis'
+              'logo' => 'logo-1.jpeg',
+              'text' => 'Tengah Tenggorokan',
+              'name' => 'وسط الحلق',
+              'role' => 'ع ح'
             ],
             [
-              'logo' => 'logo-3.png',
-              'text' => 'This template is superior in so many ways. The code, the design, the updates, the support.',
-              'name' => 'Eugenia Moore',
-              'role' => 'CTO of Airbnb'
+              'logo' => 'logo-3.jpeg',
+              'text' => 'Ujung Tenggorokan',
+              'name' => 'أدنى الحلق',
+              'role' => 'غ خ'
             ],
           ];
         @endphp
