@@ -1,175 +1,170 @@
 @php
   $configData = Helper::appClasses();
-  $configData['layout'] = 'horizontal'; // ⬅️ HILANGKAN SIDEBAR
 @endphp
 
 @extends('layouts.layoutMaster')
 
-@section('title', 'Pembelajaran Tajwid')
+@section('title', 'Quiz Makhraj & Tajwid')
+
+@section('page-script')
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+const bankSoal = [
+  { q: "Apa itu ilmu tajwid?", o: ["Ilmu sejarah Arab","Ilmu recitation Quran","Ilmu tafsir","Ilmu tata bahasa"], a: 1 },
+  { q: "Berapa hukum utama Tajwid saat Nun Sukun bertemu huruf?", o: ["3","4","5","2"], a: 2 },
+  { q: "Huruf Idgham Bighunnah termasuk huruf …?", o: ["ل و م ن","ي ن م و","ب م و ي","ء ح خ ع"], a: 1 },
+  { q: "Istilah 'Izhar' berarti?", o: ["Jelas tanpa dengung","Menggabungkan suara","Masuk dengung","Membaca cepat"], a: 0 },
+  { q: "Huruf Izhar Syafawi berlaku saat Nun Sukun bertemu huruf …?", o: ["ب","م","ل","ر"], a: 0 },
+  { q: "Huruf yang termasuk Izhar Halqi adalah …", o: ["ل ر","ي ن م","ء هـ ع ح غ خ","ب م و"], a: 2 },
+  { q: "Iqlab terjadi bila Nun Sukun bertemu huruf …", o: ["ب","ل","ر","و"], a: 0 },
+  { q: "Mim Sukun bertemu huruf ب hukumnya …", o: ["Izhar Syafawi","Ikhfa’ Syafawi","Idgham Mimi","Iqlab"], a: 0 },
+  { q: "Huruf Qalqalah termasuk huruf …", o: ["ق ط ب ج د","ك ل م ن و","ي ر د ش س","ح ع غ خ ه"], a: 0 },
+  { q: "Madd Tabi’i adalah huruf mad yang …", o: ["Diperpanjang karena waqaf","Original","Tidak dibaca","Selalu berdengung"], a: 1 },
+];
+
+let quiz = [];
+let i = 0, score = 0, lock = false;
+
+/* =========================
+   🔥 FITUR TAMBAHAN
+========================= */
+let timer = 15;
+let interval;
+let streak = 0;
+
+const soundBenar = new Audio("https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3");
+const soundSalah = new Audio("https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3");
+
+function startTimer() {
+  timer = 15;
+  timerBox.innerText = `⏱ ${timer}s`;
+  interval = setInterval(() => {
+    timer--;
+    timerBox.innerText = `⏱ ${timer}s`;
+    if (timer === 0) {
+      clearInterval(interval);
+      feedback.innerText = "⏰ Waktu Habis";
+      nextBtn.classList.remove('d-none');
+      streak = 0;
+    }
+  }, 1000);
+}
+
+window.startQuiz = function () {
+  quiz = bankSoal.sort(() => Math.random() - 0.5).slice(0, 10);
+  i = 0; score = 0; streak = 0;
+  quizBox.classList.remove('d-none');
+  loadQuestion();
+}
+
+function loadQuestion() {
+  lock = false;
+  question.innerText = quiz[i].q;
+  feedback.innerText = "";
+  nextBtn.classList.add('d-none');
+  progress.innerText = `Soal ${i+1}/10`;
+  streakBox.innerText = `🔥 Streak: ${streak}`;
+  clearInterval(interval);
+  startTimer();
+
+  document.querySelectorAll('.option').forEach((btn, idx) => {
+    btn.className = 'btn btn-outline-primary option';
+    btn.innerText = quiz[i].o[idx];
+    btn.onclick = () => checkAnswer(idx, btn);
+  });
+}
+
+function checkAnswer(idx, btn) {
+  if (lock) return;
+  lock = true;
+  clearInterval(interval);
+
+  if (idx === quiz[i].a) {
+    btn.classList.add('btn-success');
+    score++; streak++;
+    soundBenar.play();
+    feedback.innerText = "✅ Benar";
+  } else {
+    btn.classList.add('btn-danger');
+    streak = 0;
+    soundSalah.play();
+    feedback.innerText = "❌ Salah";
+  }
+  nextBtn.classList.remove('d-none');
+}
+
+window.nextQuestion = function () {
+  i++;
+  if (i < quiz.length) loadQuestion();
+  else {
+    quizBox.innerHTML = `
+      <div class="card-body text-center p-5">
+        <h4>🎉 Quiz Selesai</h4>
+        <p class="fs-5">Skor: <b>${score}/10</b></p>
+        ${score >= 8 ? "<p class='text-success fw-bold'>🔥 MasyaAllah! Hebat!</p>" : ""}
+        <button class="btn btn-primary mt-3" onclick="startQuiz()">Main Lagi</button>
+      </div>`;
+    if (score >= 8) confetti();
+  }
+}
+
+/* 🎊 Confetti */
+function confetti() {
+  import("https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js")
+  .then(m => m.default({ particleCount: 150, spread: 90 }));
+}
+
+/* ⌨ Keyboard */
+document.addEventListener('keydown', e => {
+  if (lock) return;
+  if (e.key >= '1' && e.key <= '4')
+    document.querySelectorAll('.option')[e.key-1]?.click();
+  if (e.key === 'Enter' && !nextBtn.classList.contains('d-none'))
+    nextBtn.click();
+});
+
+});
+</script>
+@endsection
+
 
 @section('content')
-<section class="section-py first-section-pt py-4 mt-5">
-    <div class="container">
+<div class="container py-5">
 
-        <!-- Sticky Header + Search -->
-<div class="position-sticky top-0 z-3 mb-5" style="background: var(--bs-body-bg);">
-    <div class="card border-0 shadow-sm">
-        <div class="card-body py-3">
-            <div class="row align-items-center g-3">
+  <div class="text-center mb-5">
+    <h3 class="fw-bold">🎮 Quiz Makhraj & Tajwid</h3>
+    <p class="text-muted">Uji pemahamanmu tentang makhraj huruf & hukum tajwid</p>
+    <button class="btn btn-primary btn-lg" onclick="startQuiz()">Mulai Quiz</button>
+  </div>
 
-                <!-- Judul & Breadcrumb -->
-             <ol class="breadcrumb mb-1 small">
-    <li class="breadcrumb-item">
-        <a href="{{ url('/') }}">Beranda</a>
-    </li>
-    <li class="breadcrumb-item">
-        <a href="{{ url('/peraturan-gubernur') }}">Kitab Kuning</a>
-    </li>
-    <li class="breadcrumb-item">
-        <a href="{{ url('/keputusan-gubernur') }}">Audio Ngaji</a>
-    </li>
-    <li class="breadcrumb-item active">Tajwid Digital</li>
-</ol>
+  <div class="d-flex justify-content-center">
+    <div id="quizBox" class="card shadow-lg d-none" style="max-width:720px; width:100%;">
+      <div class="card-body p-5">
 
-
-                <!-- Search -->
-                <div class="col-lg-4">
-                    <form method="GET" action="{{ url('/peraturan-direktur') }}">
-                        <div class="input-group input-group-sm">
-                            <span class="input-group-text">
-                                <i class="ri ri-search-line"></i>
-                            </span>
-                            <input
-                                type="text"
-                                name="q"
-                                value="{{ request('q') }}"
-                                class="form-control"
-                                placeholder="Cari materi pembelajaran…
-">
-                        </div>
-                    </form>
-                </div>
-
-                
-
-
-
-
-            </div>
+        <div class="d-flex justify-content-between mb-3 fw-bold">
+          <span id="progress"></span>
+          <span id="timerBox">⏱ 15s</span>
+          <span id="streakBox">🔥 Streak: 0</span>
         </div>
+
+        <h5 id="question" class="mb-4 text-center"></h5>
+
+        <div class="d-grid gap-3">
+          <button class="btn btn-outline-primary option"></button>
+          <button class="btn btn-outline-primary option"></button>
+          <button class="btn btn-outline-primary option"></button>
+          <button class="btn btn-outline-primary option"></button>
+        </div>
+
+        <div id="feedback" class="mt-4 fw-bold text-center"></div>
+
+        <div class="text-center mt-4">
+          <button class="btn btn-success d-none" id="nextBtn" onclick="nextQuestion()">Soal Berikutnya</button>
+        </div>
+
+      </div>
     </div>
+  </div>
 </div>
-
-        <!-- Header -->
-        <div class="text-center mb-5">
-            <h3 class="fw-bold">Pembelajaran Tajwid Interaktif</h3>
-            <p class="text-muted">
-                Belajar bacaan Al-Qur’an dengan tepat dari, sifat, dan hukum tajwid
-            </p>
-        </div>
-
-        <!-- ================= SYEKH ================= -->
-        <section id="syekh-section" class="mb-6">
-            <h4 class="mb-4">Para Syekh / Qari</h4>
-            <div class="row g-4">
-
-                <!-- Card Syekh -->
-                <div class="col-md-6">
-                    <div class="card shadow-sm h-100">
-                        <div class="card-body d-flex gap-3">
-                            <img src="{{ asset('assets/img/syekh/muamar.jpg') }}"
-                                 class="rounded" width="90">
-                            <div>
-                                <h6 class="mb-1">Muammar Z.A.</h6>
-                                <p class="small text-muted">
-                                    Qari Indonesia dengan bacaan merdu dan tartil.
-                                </p>
-                                <audio controls class="w-100">
-                                    <source src="{{ asset('assets/audio/002.mp3') }}">
-                                </audio>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="card shadow-sm h-100">
-                        <div class="card-body d-flex gap-3">
-                            <img src="{{ asset('assets/img/syekh/ali-jaber.jpg') }}"
-                                 class="rounded" width="90">
-                            <div>
-                                <h6 class="mb-1">Sheikh Ali Jaber</h6>
-                                <p class="small text-muted">
-                                    Qari dan da’i dengan bacaan tajwid yang kuat.
-                                </p>
-                                <audio controls class="w-100">
-                                    <source src="{{ asset('assets/audio/001.mp3') }}">
-                                </audio>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ================= TAJWID ================= -->
-        <section id="tajwid-section" class="mb-6">
-            <h4 class="mb-4">Hukum Tajwid</h4>
-
-            <div class="row g-4">
-                @foreach ([
-                    'Izhar','Idgham','Ikhfa','Iqlab',
-                    'Mad','Ghunna','Qalqalah',
-                    'Tafkhim','Tarqiq','Waqf'
-                ] as $tajwid)
-                <div class="col-md-4">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-body">
-                            <h6>{{ $tajwid }}</h6>
-                            <p class="small text-muted">
-                                Penjelasan singkat hukum {{ $tajwid }}.
-                            </p>
-                            <audio controls class="w-100">
-                                <source src="{{ asset('assets/audio/'.$tajwid.'.mp3') }}">
-                            </audio>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </section>
-
-      
-        
-
-        <!-- ================= MAQAM ================= -->
-        <section id="maqam-section" class="mb-6">
-            <h4 class="mb-4">Maqamat / Nada Bacaan</h4>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body text-center">
-                            <h6>Bayyati</h6>
-                            <audio controls class="w-100">
-                                <source src="{{ asset('assets/audio/maqam-bayyati.mp3') }}">
-                            </audio>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body text-center">
-                            <h6>Hijaz</h6>
-                            <audio controls class="w-100">
-                                <source src="{{ asset('assets/audio/maqam-hijaz.mp3') }}">
-                            </audio>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </div>
-</section>
 @endsection

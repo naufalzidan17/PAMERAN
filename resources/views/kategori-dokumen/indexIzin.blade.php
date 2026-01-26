@@ -140,6 +140,8 @@ new Swiper('#swiper-syafatain', {
     @endphp
 
     {{-- AL JAUF --}}
+    <h5 class="text-center fw-bold mb-4">الجوف</h5>
+
     <div class="swiper mb-10" id="swiper-jauf">
       <div class="swiper-wrapper">
         @foreach ($alJauf as $r)
@@ -156,6 +158,8 @@ new Swiper('#swiper-syafatain', {
     </div>
 
     {{-- AL HALQI --}}
+    <h5 class="text-center fw-bold mb-4">الحلق</h5>
+
     <div class="swiper mb-10" id="swiper-halqi">
       <div class="swiper-wrapper">
         @foreach ($alHalqi as $r)
@@ -173,6 +177,8 @@ new Swiper('#swiper-syafatain', {
     </div>
 
     {{-- AL LISAN --}}
+    <h5 class="text-center fw-bold mb-4">اللسان</h5>
+
     <div class="swiper mb-10" id="swiper-lisan">
       <div class="swiper-wrapper">
         @foreach ($alLisan as $r)
@@ -190,6 +196,8 @@ new Swiper('#swiper-syafatain', {
     </div>
 
     {{-- ASY SYAFATAIN --}}
+    <h5 class="text-center fw-bold mb-4">الشفتان</h5>
+
     <div class="swiper mb-10" id="swiper-syafatain">
       <div class="swiper-wrapper">
         @foreach ($asySyafatain as $r)
@@ -207,6 +215,8 @@ new Swiper('#swiper-syafatain', {
     </div>
 
     {{-- KHOISYUM --}}
+    <h5 class="text-center fw-bold mb-4">الخيشوم</h5>
+
     <div class="swiper" id="swiper-khoisyum">
       <div class="swiper-wrapper">
         @foreach ($khoisyum as $r)
