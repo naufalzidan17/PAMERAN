@@ -4,27 +4,21 @@
 
 @extends('layouts.layoutMaster')
 
-@section('title', 'Customer Reviews')
+@section('title', 'Makhraj Huruf Hijaiyah')
 
-{{-- Vendor Style --}}
 @section('vendor-style')
-@vite([
-  'resources/assets/vendor/libs/swiper/swiper.scss'
-])
+@vite(['resources/assets/vendor/libs/swiper/swiper.scss'])
 @endsection
 
-{{-- Vendor Script --}}
 @section('vendor-script')
-@vite([
-  'resources/assets/vendor/libs/swiper/swiper.js'
-])
+@vite(['resources/assets/vendor/libs/swiper/swiper.js'])
 @endsection
 
 @section('page-script')
 <script>
 document.addEventListener('DOMContentLoaded', function () {
 
-  // Swiper Al Jauf (tengah, ukuran sama)
+  // AL JAUF
   new Swiper('#swiper-jauf', {
     slidesPerView: 3,
     centeredSlides: true,
@@ -37,11 +31,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // Swiper Al Halqi
+  // AL HALQI
   new Swiper('#swiper-halqi', {
     slidesPerView: 3,
     spaceBetween: 30,
-    loop: true,
+    loop: false,
     pagination: {
       el: '#swiper-halqi .swiper-pagination',
       clickable: true
@@ -53,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // Swiper Al Lisan
+  // AL LISAN
   new Swiper('#swiper-lisan', {
     slidesPerView: 3,
     spaceBetween: 30,
@@ -69,115 +63,165 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  // ASY-SYAFATAIN (2 CARD DI TENGAH)
+// ASY-SYAFATAIN (RAPI, TIDAK GEPENG)
+new Swiper('#swiper-syafatain', {
+  slidesPerView: 3,
+  centeredSlides: true,
+  spaceBetween: 30,
+  loop: false,
+  pagination: {
+    el: '#swiper-syafatain .swiper-pagination',
+    clickable: true
+  },
+  breakpoints: {
+    0: { slidesPerView: 1, centeredSlides: true },
+    768: { slidesPerView: 2, centeredSlides: true },
+    1200: { slidesPerView: 3, centeredSlides: true }
+  }
+});
+
+
+  // KHOISYUM (SAMA PERSIS DENGAN AL JAUF)
+  new Swiper('#swiper-khoisyum', {
+    slidesPerView: 3,
+    centeredSlides: true,
+    spaceBetween: 30,
+    loop: false,
+    breakpoints: {
+      0: { slidesPerView: 1, centeredSlides: true },
+      768: { slidesPerView: 2, centeredSlides: true },
+      1200: { slidesPerView: 3, centeredSlides: true }
+    }
+  });
+
 });
 </script>
 @endsection
 
 @section('content')
-
 <section class="section-py bg-body">
   <div class="container">
 
-    {{-- Title --}}
-    <h6 class="text-center d-flex justify-content-center align-items-center mb-4">
-      <img src="{{ asset('assets/img/front-pages/icons/section-title-icon.png') }}" height="18" class="me-2">
-      <span class="text-uppercase">Real customers reviews</span>
-    </h6>
+    <h4 class="text-center fw-bold mb-8">Makhraj Huruf Hijaiyah</h4>
 
-    <h5 class="text-center mb-2">
-      <span class="fw-bold">Makhraj Huruf Hijaiyah</span>
-    </h5>
-
-    <p class="text-center text-body mb-8">
-      Makhraj adalah tempat keluarnya huruf-huruf hijaiyah dari alat ucap manusia.
-      Menurut pendapat masyhur Imam Khalil bin Ahmad, makhraj huruf ada 17 yang terbagi menjadi 5 bagian.
-    </p>
-
-    {{-- DATA (TIDAK DIUBAH) --}}
     @php
-      $reviews = [
-        ['logo'=>'logo-2.jpeg','text'=>'(Rongga Mulut)','name'=>'1. الجوف','role'=>'ا و ي (huruf mad)'],
-        ['logo'=>'logo-5.jpg','text'=>'Pangkal Tenggorokan','name'=>'2. أقصى الحلق','role'=>'ء هـ'],
-        ['logo'=>'logo-1.jpeg','text'=>'Tengah Tenggorokan','name'=>'وسط الحلق','role'=>'ع ح'],
+      $alJauf = [
+        ['logo'=>'logo-2.jpeg','text'=>'Rongga mulut','name'=>'الجوف','role'=>'ا و ي']
+      ];
 
-        ['logo'=>'logo-4.jpeg','text'=>'Aqsa al-Lisan Fauqu','name'=>'Pangkal lidah bagian atas','role'=>'ق'],
-        ['logo'=>'logo-4.jpeg','text'=>'Aqsa al-Lisan Asfalu','name'=>'Pangkal lidah bagian bawah','role'=>'ك'],
-        ['logo'=>'logo-4.jpeg','text'=>'Wasto al-Lisan','name'=>'Tengah lidah','role'=>'ج ش ي'],
-        ['logo'=>'logo-4.jpeg','text'=>'Hafati al-Lisan ma al-Adros','name'=>'Samping lidah','role'=>'ض'],
-        ['logo'=>'logo-4.jpeg','text'=>'Adna al-Lisan li Muntahaha','name'=>'Ujung lidah','role'=>'ل'],
-        ['logo'=>'logo-4.jpeg','text'=>'Torfu al-Lisan tahta','name'=>'Ujung lidah bawah','role'=>'ن'],
-        ['logo'=>'logo-4.jpeg','text'=>'Dzohru Ro\'si al-Lisan','name'=>'Punggung lidah','role'=>'ر'],
-        ['logo'=>'logo-4.jpeg','text'=>'Torful al-Lisan ma Usuli','name'=>'Ujung lidah + gigi atas','role'=>'ت د ط'],
-        ['logo'=>'logo-4.jpeg','text'=>'Torful al-Lisan wa min Fauqi','name'=>'Ujung lidah + gigi bawah','role'=>'ص ز س'],
-        ['logo'=>'logo-4.jpeg','text'=>'Torfu al-Lisan ma Atrofi','name'=>'Ujung lidah + ujung gigi','role'=>'ظ ذ ث'],
+      $alHalqi = [
+        ['logo'=>'logo-5.jpg','text'=>'Pangkal tenggorokan','name'=>'أقصى الحلق','role'=>'ء هـ'],
+        ['logo'=>'logo-1.jpeg','text'=>'Tengah tenggorokan','name'=>'وسط الحلق','role'=>'ع ح'],
+        ['logo'=>'logo-3.jpeg','text'=>'Ujung tenggorokan','name'=>'أدنى الحلق','role'=>'غ خ'],
+      ];
 
-        ['logo'=>'logo-3.jpeg','text'=>'Ujung Tenggorokan','name'=>'أدنى الحلق','role'=>'غ خ'],
+      $alLisan = [
+        ['logo'=>'logo-4.jpeg','text'=>'Pangkal lidah atas','name'=>'أقصى اللسان','role'=>'ق'],
+        ['logo'=>'logo-4.jpeg','text'=>'Pangkal lidah bawah','name'=>'أقصى اللسان','role'=>'ك'],
+        ['logo'=>'logo-4.jpeg','text'=>'Tengah lidah','name'=>'وسط اللسان','role'=>'ج ش ي'],
+        ['logo'=>'logo-4.jpeg','text'=>'Samping lidah','name'=>'حافتا اللسان','role'=>'ض'],
+        ['logo'=>'logo-4.jpeg','text'=>'Ujung lidah','name'=>'أدنى اللسان','role'=>'ل'],
+        ['logo'=>'logo-4.jpeg','text'=>'Ujung lidah bawah','name'=>'طرف اللسان','role'=>'ن'],
+        ['logo'=>'logo-4.jpeg','text'=>'Punggung lidah','name'=>'ظهر رأس اللسان','role'=>'ر'],
+        ['logo'=>'logo-4.jpeg','text'=>'Ujung lidah + gigi atas','name'=>'طرف اللسان','role'=>'ت د ط'],
+        ['logo'=>'logo-4.jpeg','text'=>'Ujung lidah + gigi bawah','name'=>'طرف اللسان','role'=>'ص ز س'],
+        ['logo'=>'logo-4.jpeg','text'=>'Ujung lidah + ujung gigi','name'=>'طرف اللسان','role'=>'ظ ذ ث'],
+      ];
+
+      $asySyafatain = [
+        ['logo'=>'logo-10.jpg','text'=>'Bibir bawah + gigi atas','name'=>'الشفتان','role'=>'ف'],
+        ['logo'=>'logo-3.jpeg','text'=>'Dua bibir','name'=>'الشفتان','role'=>'ب م و'],
+      ];
+
+      $khoisyum = [
+        ['logo'=>'logo-6.jpg','text'=>'Rongga hidung (ghunnah)','name'=>'الخيشوم','role'=>'غنة']
       ];
     @endphp
 
-    {{-- SWIPER : AL JAUF --}}
-    <div class="swiper mb-8" id="swiper-jauf">
+    {{-- AL JAUF --}}
+    <div class="swiper mb-10" id="swiper-jauf">
       <div class="swiper-wrapper">
-        @foreach ($reviews as $index => $review)
-          @if ($index == 0)
-          <div class="swiper-slide">
-            <div class="card h-230">
-              <div class="card-body text-center p-5">
-                <img src="{{ asset('assets/img/front-pages/branding/' . $review['logo']) }}" class="mb-4" style="max-height:230px">
-                <p class="mb-4">{{ $review['text'] }}</p>
-                <h6>{{ $review['name'] }}</h6>
-                <p class="small">{{ $review['role'] }}</p>
-              </div>
-            </div>
+        @foreach ($alJauf as $r)
+        <div class="swiper-slide">
+          <div class="card text-center p-5">
+            <img src="{{ asset('assets/img/front-pages/branding/'.$r['logo']) }}" class="mb-4" style="max-height:200px">
+            <p>{{ $r['text'] }}</p>
+            <h6>{{ $r['name'] }}</h6>
+            <p class="small">{{ $r['role'] }}</p>
           </div>
-          @endif
+        </div>
         @endforeach
       </div>
     </div>
 
-    {{-- SWIPER : AL HALQI --}}
+    {{-- AL HALQI --}}
     <div class="swiper mb-10" id="swiper-halqi">
       <div class="swiper-wrapper">
-        @foreach ($reviews as $index => $review)
-          @if ($index == 1 || $index == 2 || $index == count($reviews)-1)
-          <div class="swiper-slide">
-            <div class="card h-230">
-              <div class="card-body text-center p-5">
-                <img src="{{ asset('assets/img/front-pages/branding/' . $review['logo']) }}" class="mb-4" style="max-height:230px">
-                <p class="mb-4">{{ $review['text'] }}</p>
-                <h6>{{ $review['name'] }}</h6>
-                <p class="small">{{ $review['role'] }}</p>
-              </div>
-            </div>
+        @foreach ($alHalqi as $r)
+        <div class="swiper-slide">
+          <div class="card text-center p-5">
+            <img src="{{ asset('assets/img/front-pages/branding/'.$r['logo']) }}" class="mb-4" style="max-height:200px">
+            <p>{{ $r['text'] }}</p>
+            <h6>{{ $r['name'] }}</h6>
+            <p class="small">{{ $r['role'] }}</p>
           </div>
-          @endif
+        </div>
         @endforeach
       </div>
       <div class="swiper-pagination mt-4"></div>
     </div>
 
-    {{-- SWIPER : AL LISAN --}}
-    <div class="swiper" id="swiper-lisan">
+    {{-- AL LISAN --}}
+    <div class="swiper mb-10" id="swiper-lisan">
       <div class="swiper-wrapper">
-        @foreach ($reviews as $index => $review)
-          @if ($index >= 3 && $index <= 12)
-          <div class="swiper-slide">
-            <div class="card h-230">
-              <div class="card-body text-center p-5">
-                <img src="{{ asset('assets/img/front-pages/branding/' . $review['logo']) }}" class="mb-4" style="max-height:230px">
-                <p class="mb-4">{{ $review['text'] }}</p>
-                <h6>{{ $review['name'] }}</h6>
-                <p class="small">{{ $review['role'] }}</p>
-              </div>
-            </div>
+        @foreach ($alLisan as $r)
+        <div class="swiper-slide">
+          <div class="card text-center p-5">
+            <img src="{{ asset('assets/img/front-pages/branding/'.$r['logo']) }}" class="mb-4" style="max-height:200px">
+            <p>{{ $r['text'] }}</p>
+            <h6>{{ $r['name'] }}</h6>
+            <p class="small">{{ $r['role'] }}</p>
           </div>
-          @endif
+        </div>
         @endforeach
       </div>
       <div class="swiper-pagination mt-4"></div>
+    </div>
+
+    {{-- ASY SYAFATAIN --}}
+    <div class="swiper mb-10" id="swiper-syafatain">
+      <div class="swiper-wrapper">
+        @foreach ($asySyafatain as $r)
+        <div class="swiper-slide">
+          <div class="card text-center p-5">
+            <img src="{{ asset('assets/img/front-pages/branding/'.$r['logo']) }}" class="mb-4" style="max-height:200px">
+            <p>{{ $r['text'] }}</p>
+            <h6>{{ $r['name'] }}</h6>
+            <p class="small">{{ $r['role'] }}</p>
+          </div>
+        </div>
+        @endforeach
+      </div>
+      <div class="swiper-pagination mt-4"></div>
+    </div>
+
+    {{-- KHOISYUM --}}
+    <div class="swiper" id="swiper-khoisyum">
+      <div class="swiper-wrapper">
+        @foreach ($khoisyum as $r)
+        <div class="swiper-slide">
+          <div class="card text-center p-5">
+            <img src="{{ asset('assets/img/front-pages/branding/'.$r['logo']) }}" class="mb-4" style="max-height:200px">
+            <p>{{ $r['text'] }}</p>
+            <h6>{{ $r['name'] }}</h6>
+            <p class="small">{{ $r['role'] }}</p>
+          </div>
+        </div>
+        @endforeach
+      </div>
     </div>
 
   </div>
 </section>
-
 @endsection
