@@ -85,7 +85,25 @@
                                 Quiz.
                             </p>
                         </div>
-                        <a class="btn btn-outline-primary btn-sm mt-auto" href="peraturan-direktur">
+                        <a class="btn btn-outline-primary btn-sm mt-auto" href="/front-pages/payment">
+                            Detail
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+                        <!-- Card 2 -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card border shadow-sm h-100 text-center">
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <div>
+                            <i class="bi bi-file-earmark-richtext text-info" style="font-size:2.2rem;"></i>
+                            <h6 class="my-3">Kalender</h6>
+                            <p class="small text-muted">
+                               Kalender
+                            </p>
+                        </div>
+                        <a class="btn btn-outline-primary btn-sm mt-auto" href="sop">
                             Detail
                         </a>
                     </div>

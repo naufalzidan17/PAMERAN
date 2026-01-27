@@ -174,6 +174,7 @@ Route::post('/dokumen/store', [DocumentController::class, 'store'])->name('dokum
 // use App\Http\Controllers\VerifikasiController;
 
 // Define a route for kategori dokumen
+Route::get('/front-pages/payment', [Payment::class, 'index'])->name('front-pages-payment');
 
 Route::get('/peraturan-gubernur', [DocumentController::class, 'peraturanGubernur'])->name('peraturan-gubernur');
 Route::get('/keputusan-gubernur', [DocumentController::class, 'keputusanGubernur'])->name('keputusan-gubernur');
@@ -220,7 +221,7 @@ Route::get('/layouts/blank', [Blank::class, 'index'])->name('layouts-blank');
 // Front Pages
 Route::get('/front-pages/landing', [Landing::class, 'index'])->name('front-pages-landing');
 Route::get('/front-pages/pricing', [Pricing::class, 'index'])->name('front-pages-pricing');
-Route::get('/front-pages/payment', [Payment::class, 'index'])->name('front-pages-payment');
+
 Route::get('/front-pages/checkout', [Checkout::class, 'index'])->name('front-pages-checkout');
 Route::get('/front-pages/help-center', [HelpCenter::class, 'index'])->name('front-pages-help-center');
 Route::get('/front-pages/help-center-article', [HelpCenterArticle::class, 'index'])->name('front-pages-help-center-article');
