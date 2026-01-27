@@ -16,7 +16,7 @@
           <h6 class="footer-title mb-4 mb-lg-6">Digital Library</h6>
           <ul class="list-unstyled mb-0">
             <li class="mb-4"><a href="{{ url('peraturan-gubernur') }}" class="footer-link">Kitab Kuning</a></li>
-            <li class="mb-4"><a href="{{ url('keputusan-gubernur') }}" class="footer-link">Audio Ngaji</a></li>
+            <li class="mb-4"><a href="{{ url('keputusan-gubernur') }}" class="footer-link">Quiz</a></li>
             <li class="mb-4"><a href="{{ url('peraturan-direktur') }}" class="footer-link">Tajwid Digital</a></li>
           </ul>
         </div>

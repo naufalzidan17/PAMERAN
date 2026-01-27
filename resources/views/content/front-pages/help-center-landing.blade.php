@@ -80,9 +80,9 @@
                     <div class="card-body d-flex flex-column justify-content-between">
                         <div>
                             <i class="bi bi-file-earmark-richtext text-info" style="font-size:2.2rem;"></i>
-                            <h6 class="my-3">Audio Ngaji</h6>
+                            <h6 class="my-3">Quiz</h6>
                             <p class="small text-muted">
-                                Kumpulan audio ngaji, syarah, dan ceramah.
+                                Quiz.
                             </p>
                         </div>
                         <a class="btn btn-outline-primary btn-sm mt-auto" href="peraturan-direktur">
