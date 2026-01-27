@@ -29,6 +29,7 @@
   <div class="container">
     <div class="card px-4">
       <div class="row">
+        
 
         <!-- KIRI -->
         <div class="col-lg-7 card-body border-end p-8 ps-7">
