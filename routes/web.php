@@ -172,6 +172,20 @@ Route::get('/ajax/judul', [DocumentController::class, 'ajaxJudul'])->name('ajax.
 Route::post('/dokumen/store', [DocumentController::class, 'store'])->name('dokumen.store');
 
 // use App\Http\Controllers\VerifikasiController;
+//leardeboard santri
+use App\Http\Controllers\SantriController;
+use App\Http\Controllers\QuizController;
+
+
+
+Route::get('/santri', [SantriController::class, 'create'])->name('santri.create');
+Route::post('/santri', [SantriController::class, 'store'])->name('santri.store');
+
+Route::get('/quiz', [QuizController::class, 'index'])->name('quiz.index');
+Route::post('/quiz/store', [QuizController::class, 'store'])->name('quiz.store');
+Route::get('/quiz/leaderboard', [QuizController::class, 'leaderboard'])->name('quiz.leaderboard');
+Route::post('/quiz/submit', [QuizController::class, 'submit'])->name('quiz.submit');
+
 
 // Define a route for kategori dokumen
 Route::get('/front-pages/payment', [Payment::class, 'index'])->name('front-pages-payment');

@@ -50,6 +50,13 @@
       }
     }, 1000);
   }
+const quizBox = document.getElementById('quizBox');
+const question = document.getElementById('question');
+const feedback = document.getElementById('feedback');
+const nextBtn = document.getElementById('nextBtn');
+const progress = document.getElementById('progress');
+const streakBox = document.getElementById('streakBox');
+const timerBox = document.getElementById('timerBox');
 
   window.startQuiz = function () {
     quiz = bankSoal.sort(() => Math.random() - 0.5).slice(0, 10);

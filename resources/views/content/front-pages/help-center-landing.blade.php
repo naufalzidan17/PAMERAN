@@ -85,7 +85,7 @@
                                 Quiz.
                             </p>
                         </div>
-                        <a class="btn btn-outline-primary btn-sm mt-auto" href="/front-pages/payment">
+                        <a class="btn btn-outline-primary btn-sm mt-auto" href="santri">
                             Detail
                         </a>
                     </div>
