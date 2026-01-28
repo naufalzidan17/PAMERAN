@@ -48,10 +48,10 @@
             </li>
 
             <li class="nav-item">
-                <a href="{{ url('/peraturan-direktur') }}"
+                <a href="{{ url('/santri') }}"
                    class="btn btn-primary btn-sm d-flex align-items-center gap-1">
                     <i class="ri ri-file-text-line"></i>
-                    <span>Audio Digital</span>
+                    <span>Quiz</span>
                 </a>
             </li>
 

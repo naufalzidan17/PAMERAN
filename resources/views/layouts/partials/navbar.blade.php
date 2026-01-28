@@ -8,7 +8,7 @@
             </a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{ url('/dashboard') }}" class="nav-link">Dashboard Manajemen RSKK</a>
+            <a href="{{ url('/dashboard') }}" class="nav-link">Al-Falah</a>
         </li>
     </ul>
 

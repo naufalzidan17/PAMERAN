@@ -13,10 +13,10 @@
           "slug": "perizinan"
         },
          {
-          "url": "/peraturan-direktur",
+          "url": "/santri",
           "name": "Quiz",
           "icon": "menu-icon icon-base ri ri-eye-line",
-          "slug": "peraturan-direktur"
+          "slug": "santri"
         },
          {
           "url": "/peraturan-gubernur",
