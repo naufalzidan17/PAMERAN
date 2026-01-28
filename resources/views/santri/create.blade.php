@@ -160,14 +160,49 @@
   </div>
 </div>
 
+<!-- ================= ASAL DAERAH ================= -->
+<div class="col-12 mt-4">
+  <div class="form-floating form-floating-outline">
+    <select name="asal_daerah" id="asalDaerah" class="form-select select2">
+      <option value="">Pilih Kota / Kabupaten</option>
 
-              <div class="col-12 mt-4">
-                <div class="form-floating form-floating-outline">
-                  <input type="text" name="asal_daerah" class="form-control" placeholder="Asal Daerah" />
-                  <label>Asal Daerah</label>
-                </div>
-              </div>
-            </div>
+      <optgroup label="Jawa Barat">
+        <option>Bandung</option>
+        <option>Bandung Barat</option>
+        <option>Bekasi</option>
+        <option>Bogor</option>
+        <option>Cimahi</option>
+        <option>Cirebon</option>
+        <option>Garut</option>
+        <option>Sumedang</option>
+        <option>Tasikmalaya</option>
+      </optgroup>
+
+      <optgroup label="DKI Jakarta">
+        <option>Jakarta Pusat</option>
+        <option>Jakarta Utara</option>
+        <option>Jakarta Barat</option>
+        <option>Jakarta Selatan</option>
+        <option>Jakarta Timur</option>
+      </optgroup>
+
+      <optgroup label="Luar Jawa Barat">
+        <option>Surabaya</option>
+        <option>Semarang</option>
+        <option>Yogyakarta</option>
+        <option>Malang</option>
+        <option>Medan</option>
+        <option>Makassar</option>
+        <option>Palembang</option>
+        <option>Padang</option>
+        <option>Lainnya</option>
+      </optgroup>
+    </select>
+    <label>Asal Daerah</label>
+  </div>
+</div>
+
+
 
             <div class="mt-6">
               <button type="submit" class="btn btn-success">Mulai Quiz</button>
@@ -241,5 +276,19 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 </script>
+<script>
+$(document).ready(function () {
+  $('#asalDaerah').select2({
+    theme: 'default',
+    dropdownParent: $('#asalDaerah').parent(),
+    placeholder: 'Cari kota / kabupaten',
+    allowClear: true,
+    width: '100%'
+  });
+});
+</script>
+
+
+
 
 @endsection
