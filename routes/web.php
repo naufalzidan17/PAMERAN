@@ -175,7 +175,34 @@ Route::post('/dokumen/store', [DocumentController::class, 'store'])->name('dokum
 //leardeboard santri
 use App\Http\Controllers\SantriController;
 use App\Http\Controllers\QuizController;
+           Route::get('/kitab/{id}', function ($id) {
 
+    $kitabs = [
+        1 => [
+            'judul' => 'Kitab Fiqih Dasar',
+            'flip_url' => 'https://online.fliphtml5.com/agqrv/xibv/'
+        ],
+        2 => [
+            'judul' => 'Kitab Tajwid',
+            'flip_url' => 'https://online.fliphtml5.com/agqrv/xibv/'
+        ],
+        3 => [
+            'judul' => 'Kitab Akhlak',
+            'flip_url' => 'https://online.fliphtml5.com/agqrv/xibv/'
+        ],
+    ];
+
+    $kitab = $kitabs[$id] ?? abort(404);
+Route::get('/kitab/view', function () {
+    return view('kitab.viewer');
+});
+
+    return view('kitab.viewer', compact('kitab'));
+})->name('kitab.viewer');
+
+Route::get('/kitab/flip', function () {
+    return view('kitab.flip');
+})->name('kitab.flip');
 
 
 Route::get('/santri', [SantriController::class, 'create'])->name('santri.create');

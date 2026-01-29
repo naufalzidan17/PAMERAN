@@ -68,7 +68,7 @@
                                 Kitab Kuning digital dengan viewer Arab Pegon.
                             </p>
                         </div>
-                        <a class="btn btn-outline-primary btn-sm mt-auto" href="peraturan-gubernur">
+                        <a class="btn btn-outline-primary btn-sm mt-auto" href="keputusan-gubernur">
                             Detail
                         </a>
                     </div>
