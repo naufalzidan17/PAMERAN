@@ -6,24 +6,48 @@
       "icon": "menu-icon icon-base ri ri-home-4-line",
       "slug": "home"
     },
+          {
+          "menuHeader": "Digital Library Santri"
+        },  
      {
           "url": "/perizinan",
           "name": "Tajwid Digital",
-          "icon": "menu-icon icon-base ri ri-eye-line",
+          "icon": "menu-icon icon-base ri ri-book-open-line",
           "slug": "perizinan"
         },
-         {
-          "url": "/santri",
-          "name": "Quiz",
-          "icon": "menu-icon icon-base ri ri-eye-line",
-          "slug": "santri"
-        },
-         {
+                 {
           "url": "/peraturan-gubernur",
           "name": "Kitab Kuning",
-          "icon": "menu-icon icon-base ri ri-eye-line",
+          "icon": "menu-icon icon-base ri ri-book-2-line",
           "slug": "peraturan-gubernur"
         },
+                  {
+          "menuHeader": "Quiz Application"
+        },  
+                 {
+          "url": "/santri",
+          "name": "Quiz",
+          "icon": "menu-icon icon-base ri ri-gamepad-line",
+          "slug": "santri"
+        },
+             {
+          "url": "/quiz/leaderboard",
+          "name": "Leaderboard Quiz",
+          "icon": "menu-icon icon-base ri ri-calendar-event-line",
+
+          "slug": "Leaderboard Quiz"
+        },
+
+                          {
+          "menuHeader": "Lainnya"
+        },  
+             {
+          "url": "/sop",
+          "name": "Kalender",
+          "icon": "menu-icon icon-base ri ri-book-open-line",
+          "slug": "kalender"
+        },
+
     
 
     {

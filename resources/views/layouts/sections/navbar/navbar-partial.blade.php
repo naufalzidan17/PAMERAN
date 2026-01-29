@@ -27,37 +27,6 @@
     {{-- MENU --}}
     <div class="collapse navbar-collapse justify-content-end" id="navbarGuest">
 
-        {{-- ===== GUEST MENU (TANPA LOGIN) ===== --}}
-        @guest
-        <ul class="navbar-nav align-items-center gap-2">
-
-            <li class="nav-item">
-                <a href="{{ url('/peraturan-gubernur') }}"
-                   class="btn btn-outline-primary btn-sm d-flex align-items-center gap-1">
-                    <i class="ri ri-book-2-line"></i>
-                    <span>Kitab Digital</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a href="{{ url('/perizinan') }}"
-                   class="btn btn-outline-success btn-sm d-flex align-items-center gap-1">
-                    <i class="ri ri-volume-up-line"></i>
-                    <span>Tajwid Digital</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a href="{{ url('/santri') }}"
-                   class="btn btn-primary btn-sm d-flex align-items-center gap-1">
-                    <i class="ri ri-file-text-line"></i>
-                    <span>Quiz</span>
-                </a>
-            </li>
-
-        </ul>
-        @endguest
-
         {{-- ===== LOGIN USER (JIKA ADA) ===== --}}
         @auth
         <ul class="navbar-nav align-items-center">

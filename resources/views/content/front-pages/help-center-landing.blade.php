@@ -10,6 +10,7 @@
 @endsection
 @section('page-script')
 <script>
+    
     // Simpan URL awal saat user pertama kali masuk
     if (!sessionStorage.getItem('startUrl')) {
         sessionStorage.setItem('startUrl', window.location.href);
@@ -53,7 +54,7 @@
 
    <section class="section-py">
     <div class="container">
-        <h4 class="text-center mb-4">Cari Kitab, Buku, dan Artikel Keagamaan</h4>
+        <h4 class="text-center mb-4">Layanan Digital Santri</h4>
 
         <div class="row g-4 justify-content-center">
             <!-- Card 1 -->
@@ -61,7 +62,7 @@
                 <div class="card border shadow-sm h-100 text-center">
                     <div class="card-body d-flex flex-column justify-content-between">
                         <div>
-                            <i class="bi bi-journal-text text-primary" style="font-size:2.2rem;"></i>
+<i class="bi bi-book-half text-primary" style="font-size:2.5rem;"></i>
                             <h6 class="my-3">Kitab Kuning</h6>
                             <p class="small text-muted">
                                 Kitab Kuning digital dengan viewer Arab Pegon.
@@ -79,7 +80,8 @@
                 <div class="card border shadow-sm h-100 text-center">
                     <div class="card-body d-flex flex-column justify-content-between">
                         <div>
-                            <i class="bi bi-file-earmark-richtext text-info" style="font-size:2.2rem;"></i>
+<i class="bi bi-patch-question-fill text-info" style="font-size:2.5rem;"></i>
+
                             <h6 class="my-3">Quiz</h6>
                             <p class="small text-muted">
                                 Quiz.
@@ -97,7 +99,8 @@
                 <div class="card border shadow-sm h-100 text-center">
                     <div class="card-body d-flex flex-column justify-content-between">
                         <div>
-                            <i class="bi bi-file-earmark-richtext text-info" style="font-size:2.2rem;"></i>
+<i class="bi bi-calendar-event text-success" style="font-size:2.5rem;"></i>
+
                             <h6 class="my-3">Kalender</h6>
                             <p class="small text-muted">
                                Kalender
@@ -115,7 +118,7 @@
                 <div class="card border shadow-sm h-100 text-center">
                     <div class="card-body d-flex flex-column justify-content-between">
                         <div>
-                            <i class="bi bi-journal-richtext text-secondary" style="font-size:2.2rem;"></i>
+<i class="bi bi-bookmark-star-fill text-secondary" style="font-size:2.5rem;"></i>
                             <h6 class="my-3">Tajwid Digital</h6>
                             <p class="small text-muted">
                                 Panduan membaca Al-Qur’an sesuai kaidah tajwid.

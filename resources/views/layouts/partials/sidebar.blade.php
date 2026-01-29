@@ -4,7 +4,7 @@
         <img src="{{ asset('adminlte/dist/img/logo rskk.png') }}" 
              alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light d-block text-wrap" style="white-space: normal; line-height: 1.2;">
-    Rumah Sakit <br> Kesehatan Kerja
+    Al-Falah <br> Nagreg
 </span>
 
     </a>
@@ -18,7 +18,7 @@
                      class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Sihab</a>
+                <a href="#" class="d-block">Nopal</a>
             </div>
         </div>
 
