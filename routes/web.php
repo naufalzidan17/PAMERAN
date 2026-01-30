@@ -170,6 +170,13 @@ use App\Http\Middleware\AdminMiddleware;
 
 Route::get('/ajax/judul', [DocumentController::class, 'ajaxJudul'])->name('ajax.judul');
 Route::post('/dokumen/store', [DocumentController::class, 'store'])->name('dokumen.store');
+use App\Http\Controllers\KitabController;
+
+Route::get('/kitab', [KitabController::class, 'index'])->name('kitab.index');
+Route::get('/kitab/{id}', [KitabController::class, 'show'])->name('kitab.show');
+
+/* 🔍 SEARCH (BARU, TAMBAHAN SAJA) */
+Route::get('/search', [KitabController::class, 'search'])->name('search');
 
 // use App\Http\Controllers\VerifikasiController;
 //leardeboard santri

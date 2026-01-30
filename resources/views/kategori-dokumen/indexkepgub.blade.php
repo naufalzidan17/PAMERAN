@@ -1,5 +1,12 @@
-@extends('layouts.autoLayout')
+@extends('layouts.layoutMaster')
 
+@section('vendor-style')
+@vite(['resources/assets/vendor/libs/swiper/swiper.scss'])
+@endsection
+
+@section('vendor-script')
+@vite(['resources/assets/vendor/libs/swiper/swiper.js'])
+@endsection
 @section('title', 'Kitab Kuning Dan Terjemah - Al-Falah Nagreg')
 
 @section('content')
@@ -56,6 +63,23 @@
                 <li class="breadcrumb-item active">Kitab Digital</li>
             </ol>
         </nav>
+        <form action="{{ route('search') }}" method="GET"
+      class="input-wrapper my-4 input-group input-group-merge position-relative mx-auto z-0"
+      style="max-width: 480px;">
+
+    <span class="input-group-text">
+        <i class="ri ri-search-line"></i>
+    </span>
+
+    <input type="text" name="q" class="form-control"
+           placeholder="Search kitab..."
+           value="{{ request('q') }}" required>
+
+    <button class="btn btn-primary" type="submit">
+        Cari
+    </button>
+</form>
+
 
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h4 class="mb-0">📚 Kitab Digital</h4>

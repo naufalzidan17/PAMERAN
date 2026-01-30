@@ -52,6 +52,20 @@ class KitabController extends Controller
             'kitabs' => $this->kitabs
         ]);
     }
+    public function search(Request $request)
+{
+    $q = strtolower($request->q);
+
+    $filtered = array_filter($this->kitabs, function ($kitab) use ($q) {
+        return str_contains(strtolower($kitab['judul']), $q);
+    });
+
+    return view('kitab.index', [
+        'kitabs' => $filtered,
+        'q' => $request->q
+    ]);
+}
+
 
     public function show($id)
     {
