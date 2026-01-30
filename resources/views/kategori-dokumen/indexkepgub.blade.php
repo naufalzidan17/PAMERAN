@@ -23,7 +23,7 @@
             'id' => 3,
             'judul' => 'Kitab Akhlak',
             'cover' => 'https://via.placeholder.com/300x420?text=Akhlak',
-            'flip_url' => 'https://online.fliphtml5.com/agqrv/xibv/'
+            'flip_url' => 'https://online.fliphtml5.com/pccfk/kbsj/'
         ],
     ];
 @endphp
@@ -63,10 +63,11 @@
                                 {{ $kitab['judul'] }}
                             </h6>
 
-                          <a href="{{ route('kitab.viewer', $kitab['id']) }}?url={{ urlencode($kitab['flip_url']) }}"
+<a href="{{ route('kitab.viewer', $kitab['id']) }}"
    class="btn btn-primary btn-sm mt-auto w-100">
     📖 Baca Kitab
 </a>
+
 
                                class="btn btn-primary btn-sm mt-auto w-100">
                                 📖 Baca Kitab
