@@ -7,7 +7,7 @@
 
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h4 class="mb-0">📖 {{ $kitab['judul'] }}</h4>
-        <a href="{{ url('/kitab') }}" class="btn btn-outline-secondary">
+        <a href="{{ url('/keputusan-gubernur') }}" class="btn btn-outline-secondary">
             ⬅ Kembali
         </a>
     </div>

@@ -184,11 +184,11 @@ use App\Http\Controllers\QuizController;
         ],
         2 => [
             'judul' => 'Kitab Tajwid',
-            'flip_url' => 'https://online.fliphtml5.com/agqrv/xibv/'
+            'flip_url' => 'https://online.fliphtml5.com/haapc/llfn/'
         ],
         3 => [
             'judul' => 'Kitab Akhlak',
-            'flip_url' => 'https://online.fliphtml5.com/agqrv/xibv/'
+            'flip_url' => 'https://online.fliphtml5.com/pccfk/kbsj/'
         ],
     ];
 

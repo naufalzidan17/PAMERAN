@@ -16,10 +16,10 @@
           "slug": "perizinan"
         },
                  {
-          "url": "/peraturan-gubernur",
+          "url": "/keputusan-gubernur",
           "name": "Kitab Kuning",
           "icon": "menu-icon icon-base ri ri-book-2-line",
-          "slug": "peraturan-gubernur"
+          "slug": "keputusan-gubernur"
         },
                   {
           "menuHeader": "Quiz Application"
