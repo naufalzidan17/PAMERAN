@@ -35,7 +35,7 @@ class KitabController extends Controller
     9 => ['id'=>9, 'judul'=>'Kitab 9', 'cover'=>'https://via.placeholder.com/300x420?text=Kitab+9', 'flip_url'=>'https://online.fliphtml5.com/pccfk/aykp/'],
     10 => ['id'=>10, 'judul'=>'Kitab 10', 'cover'=>'https://via.placeholder.com/300x420?text=Kitab+10', 'flip_url'=>'https://fliphtml5.com/bjqgl/ebml/Kitab_Akhlak_Lil_Banin/5/'],
     11 => ['id'=>11, 'judul'=>'Kitab 11', 'cover'=>'https://via.placeholder.com/300x420?text=Kitab+11', 'flip_url'=>'https://online.fliphtml5.com/yngyi/wiqq/'],
-    12 => ['id'=>12, 'judul'=>'Kitab 12', 'cover'=>'https://via.placeholder.com/300x420?text=Kitab+12', 'flip_url'=>'https://online.fliphtml5.com/xxxx/0012/'],
+    12 => ['id'=>12, 'judul'=>'Kitab 12', 'cover'=>'https://via.placeholder.com/300x420?text=Kitab+12', 'flip_url'=>'https://fliphtml5.com/jcfb/mkia/Sirah_Nabawiyah/'],
     13 => ['id'=>13, 'judul'=>'Kitab 13', 'cover'=>'https://via.placeholder.com/300x420?text=Kitab+13', 'flip_url'=>'https://online.fliphtml5.com/xxxx/0013/'],
     14 => ['id'=>14, 'judul'=>'Kitab 14', 'cover'=>'https://via.placeholder.com/300x420?text=Kitab+14', 'flip_url'=>'https://online.fliphtml5.com/xxxx/0014/'],
     15 => ['id'=>15, 'judul'=>'Kitab 15', 'cover'=>'https://via.placeholder.com/300x420?text=Kitab+15', 'flip_url'=>'https://online.fliphtml5.com/xxxx/0015/'],
